@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<section>
+    <label for="filter-category">Kategoriya:</label>
+    <select id="filter-category" onchange="filterProducts()">
+        <option value="all">Barchasi</option>
+        <option value="Futbolka">Futbolkalar</option>
+        <option value="Kostyum">Kostyumlar</option>
+        <option value="Shim">Shimlar</option>
+        <option value="Krasovka">Krasovkalar</option>
+        <option value="Paypoq">Paypoqlar</option>
+        <option value="Sumka">Sumkalar</option>
+    </select>
+</section>
 <header>
     <h1>MenStyle</h1>
     <nav>
@@ -21,4 +32,5 @@
 
 <script src="script.js"></script>
 </body>
+
 </html>

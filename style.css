@@ -75,3 +75,10 @@ nav button {
     margin: 10px 0;
     width: 100%;
 }
+
+#filter-category {
+    margin: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

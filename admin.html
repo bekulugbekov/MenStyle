@@ -1,34 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-<header>
-    <h1>MenStyle</h1>
-    <nav>
-        <a href="index.html">Bosh sahifa</a>
-        <a href="admin.html">Admin</a>
-        <a href="checkout.html">🛒 Savat (<span id="cart-count">0</span>)</a>
-    </nav>
-</header>
-
-<div class="admin-form">
-    <h2>Mahsulot qo'shish</h2>
-    <input type="text" id="name" placeholder="Mahsulot nomi">
-    <input type="number" id="price" placeholder="Narxi">
-    <input type="text" id="img" placeholder="Rasm URL">
-    <button onclick="addProduct()">Qo'shish</button>
+<div id="login-div">
+    <h2>Admin Login</h2>
+    <input type="password" id="admin-pass" placeholder="Parolni kiriting">
+    <button onclick="checkAdmin()">Kirish</button>
 </div>
 
-<div class="admin-form">
-    <h2>Mavjud mahsulotlar</h2>
-    <div id="product-list"></div>
+<div id="admin-panel" style="display:none;">
+    <!-- Hamma admin formalar shu yerga joylanadi -->
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <a href="index.html">Bosh sahifa</a>
+            <a href="checkout.html">Savat (<span id="cart-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <div class="admin-form">
+        <h2>Mahsulot qo'shish</h2>
+        <input type="text" id="name" placeholder="Mahsulot nomi">
+        <input type="number" id="price" placeholder="Narxi">
+        <input type="text" id="img" placeholder="Rasm URL">
+        <button onclick="addProduct()">Qo'shish</button>
+    </div>
+
+    <div class="admin-form">
+        <h2>Mavjud mahsulotlar</h2>
+        <div id="product-list"></div>
+    </div>
 </div>
 
 <script src="admin.js"></script>
-<script src="script.js"></script>
+<script>
+const ADMIN_PASSWORD = "12345"; // Shu yerga sizning parolni yozing
+
+function checkAdmin() {
+    const pass = document.getElementById("admin-pass").value;
+    if(pass === ADMIN_PASSWORD){
+        document.getElementById("login-div").style.display = "none";
+        document.getElementById("admin-panel").style.display = "block";
+        renderProducts();
+        updateCartCount();
+    } else {
+        alert("Parol noto‘g‘ri!");
+    }
+}
+</script>
+
 </body>
-</html>

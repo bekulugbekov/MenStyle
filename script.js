@@ -47,6 +47,25 @@ function goToCheckout() {
     window.location.href = "checkout.html";
 }
 
-
 renderProducts();
 
+function filterProducts() {
+    const category = document.getElementById("filter-category").value;
+    const list = document.getElementById("product-list");
+    list.innerHTML = "";
+
+    products
+        .filter(p => category === "all" || p.category === category)
+        .forEach(p => {
+            list.innerHTML += `
+                <div class="product">
+                    <img src="${p.img}">
+                    <h3>${p.name}</h3>
+                    <p>${p.price.toLocaleString()} so'm</p>
+                    <button onclick="addToCart(${p.id})">Savatga qo'shish</button>
+                </div>
+            `;
+        });
+
+    updateCartCount();
+}

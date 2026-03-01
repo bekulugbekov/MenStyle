@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenStyle - Erkaklar kiyimi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
 <div id="login-div">
@@ -9,12 +15,13 @@
 <div id="admin-panel" style="display:none;">
     <!-- Hamma admin formalar shu yerga joylanadi -->
     <header>
-        <h1>Admin Panel</h1>
-        <nav>
-            <a href="index.html">Bosh sahifa</a>
-            <a href="checkout.html">Savat (<span id="cart-count">0</span>)</a>
-        </nav>
-    </header>
+    <h1>MenStyle</h1>
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="admin.html">Admin</a>
+        <button onclick="goToCheckout()">🛒 Savat (<span id="cart-count">0</span>)</button>
+    </nav>
+</header>
 
     <div class="admin-form">
         <h2>Mahsulot qo'shish</h2>
@@ -48,5 +55,4 @@ function checkAdmin() {
 </script>
 
 </body>
-
 

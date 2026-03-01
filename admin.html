@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>MenStyle</h1>
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="admin.html">Admin</a>
+        <a href="checkout.html">🛒 Savat (<span id="cart-count">0</span>)</a>
+    </nav>
+</header>
+
+<div class="admin-form">
+    <h2>Mahsulot qo'shish</h2>
+    <input type="text" id="name" placeholder="Mahsulot nomi">
+    <input type="number" id="price" placeholder="Narxi">
+    <input type="text" id="img" placeholder="Rasm URL">
+    <button onclick="addProduct()">Qo'shish</button>
+</div>
+
+<div class="admin-form">
+    <h2>Mavjud mahsulotlar</h2>
+    <div id="product-list"></div>
+</div>
+
+<script src="admin.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

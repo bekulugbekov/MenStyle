@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To'lov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>MenStyle</h1>
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="admin.html">Admin</a>
+        <a href="checkout.html">🛒 Savat (<span id="cart-count">0</span>)</a>
+    </nav>
+</header>
+
+<div class="admin-form">
+    <h2>Savat mahsulotlari</h2>
+    <div id="cart-items"></div>
+    <h3 id="total"></h3>
+
+    <button onclick="checkout()">To'lovni tasdiqlash</button>
+</div>
+
+<script>
+function loadCheckout() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let itemsDiv = document.getElementById("cart-items");
+    let total = 0;
+
+    itemsDiv.innerHTML = "";
+
+    if (cart.length === 0) {
+        itemsDiv.innerHTML = "<p>Savat bo'sh</p>";
+        document.getElementById("total").innerText = "";
+    } else {
+        cart.forEach((item, index) => {
+            itemsDiv.innerHTML += `
+                <div style="margin-bottom:10px; background:#fff; padding:10px; border-radius:5px;">
+                    ${item.name} - ${item.price.toLocaleString()} so'm
+                    <button onclick="removeFromCart(${index})"
+                        style="float:right; background:red; color:white; border:none; padding:5px; cursor:pointer;">
+                        O'chirish
+                    </button>
+                </div>
+            `;
+            total += item.price;
+        });
+
+        document.getElementById("total").innerText =
+            "Jami: " + total.toLocaleString() + " so'm";
+    }
+
+    updateCartCount();
+}
+
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1); // Tanlangan mahsulotni o'chirish
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCheckout(); // Qayta yuklash
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = document.getElementById("cart-count");
+    if (count) count.innerText = cart.length;
+}
+
+function checkout() {
+    alert("To'lov muvaffaqiyatli amalga oshirildi!");
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+}
+
+loadCheckout();
+</script>
+
+</body>
+</html>

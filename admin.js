@@ -56,4 +56,17 @@ function deleteProduct(id) {
     }
 }
 
+
+renderProducts();
+
+let category = document.getElementById("category").value;
+let newProduct = {
+    id: Date.now(),
+    name,
+    price: Number(price),
+    img,
+    category
+};
+products.push(newProduct);
+saveProducts();
 renderProducts();
